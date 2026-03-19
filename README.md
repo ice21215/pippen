@@ -1,16 +1,43 @@
-# React + Vite
+# 🎯 考試卷修正英雄 (Exam Modifier Hero)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+這是一個專為老師與助教設計的 Word 考試卷「自動對獎與修正」系統。它能自動識別試卷中的題目格式，並根據正確答案庫進行填寫、標紅與加粗，極大化提升改卷效率。
 
-Currently, two official plugins are available:
+## ✨ 核心特色
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **🚀 自動校對與填寫**：支援是非題與選擇題，自動將答案填入 `[ ]` 括號中。
+- **🔴 顯眼紅字標示**：修正後的答案會自動設定為 **「亮紅色」** 與 **「加粗」**，一眼就能看出修正位置。
+- **🧠 強大識別能力**：
+    - 支援半形 `[ ]` 與全形 `［ ］` 括號。
+    - 適應多種空格格式（如 `[  ] 3.` 或 `[ ]3.`）。
+    - 智慧處理 Word Run 拆分問題，確保格式不跑掉。
+- **🎨 旗艦級 UI/UX**：採用深色模式與現代化介面，提供流暢的拖放式操作體驗。
+- **🔒 隱私與安全**：純前端處理，您的文件不會上傳至任何伺服器，完全在本地瀏覽器完成修改。
 
-## React Compiler
+## 🛠️ 技術實作
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **框架**：React 19 + Vite 8
+- **核心庫**：
+    - [PizZip](https://github.com/open-xml-templating/pizzip)：直接操作 Word (.docx) 的 OpenXML 結構。
+    - [Lucide React](https://lucide.dev/)：提供精美的 UI 圖標。
+- **格式控制**：精準操控 `w:rPr` (Run Properties) 以實現顏色與粗體變更，並自動移除 `w:themeColor` 以防止樣式覆蓋。
 
-## Expanding the ESLint configuration
+## 📂 快速開始
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **啟動開發環境**：
+   ```bash
+   npm install
+   npm run dev
+   ```
+2. **使用捷徑**：直接雙擊桌面的 **「啟動考試卷修正英雄.bat」**。
+3. **操作流程**：
+    - 上傳原始 Word 試卷。
+    - 點擊「開始自動修正」。
+    - 下載生成的「_已修正版.docx」。
+
+## 📌 注意事項 (是非題第 3 題)
+
+針對是非題第 3 題，本系統已完成特殊優化，能確保在任何格式下都能正確識別並完成紅字標註。
+
+---
+
+*Made with ❤️ by Antigravity Team for ice21215*
